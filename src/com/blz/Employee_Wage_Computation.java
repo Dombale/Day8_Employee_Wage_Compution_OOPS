@@ -1,55 +1,60 @@
 package com.blz;
 
+import java.util.Random;
+
 public class Employee_Wage_Computation {
-	// Initialize and declare variables
 
-	static int wagePerHour = 20;
-	static int empHrs = 0;
-	static int empHrsf = 8;
-	static int empHrsP = 4;
-	static int workingDay = 20;
-	static int totalWage = 0;
-	static int totalWorkingHour = 0;
-	static int totalWorkingDay = 0;
-	static int wagePerDay;
+	public static final int IS_PART_TIME = 1;
+	public static final int IS_FULL_TIME = 2;
 
-	public static void main(String[] args) {
-		System.out.println("Welcome in Employee Wage Computation..!!!");
-		calculateSalary(); // Calling method
+	private final String company;
+	private final int empRatePerHour;
+	private final int numOfWorkingDays;
+	private final int maxHoursPerMonth;
+
+	public Employee_Wage_Computation(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+		super();
+		this.company = company;
+		this.empRatePerHour = empRatePerHour;
+		this.numOfWorkingDays = numOfWorkingDays;
+		this.maxHoursPerMonth = maxHoursPerMonth;
 	}
 
-	// Use static method to Calculate Employee salary till 100hrs & 20 days
+	public void totalEmpWage() {
+		Random random = new Random();
+		int totalWorkingDays = 0;
+		int totalWorkingHours = 0;
+		int empWage = 0;
+		int totalEmpWage = 0;
 
-	static void calculateSalary() {
-		for (int i = 1; i <= workingDay; i++) {
-			if (totalWorkingHour <= 100 && totalWorkingDay <= 20) {
-				int empCheck = (int) Math.floor((Math.random() * 10) % 3);
+		while (totalWorkingDays < numOfWorkingDays && totalWorkingHours < maxHoursPerMonth) {
+			totalWorkingDays++;
+			int empCheck = random.nextInt(3);
+			int empHrs = 0;
+			switch (empCheck) {
 
-				if (empCheck == 2) {
-					wagePerDay = (wagePerHour * empHrsf);
-					totalWage = totalWage + wagePerDay;
-					totalWorkingHour = totalWorkingHour + empHrsf;
-					totalWorkingDay++;
-				}
+			case IS_PART_TIME -> empHrs = 4;
 
-				else if (empCheck == 1) {
+			case IS_FULL_TIME -> empHrs = 8;
 
-					wagePerDay = (wagePerHour * empHrsP);
-					totalWage = totalWage + wagePerDay;
-					totalWorkingHour = totalWorkingHour + empHrsP;
-					totalWorkingDay++;
-				} else {
-					wagePerDay = 0;
-					totalWage = totalWage + wagePerDay;
-				}
+			default -> empHrs = 0;
 
-			} else
-				break;
+			}
+			totalWorkingHours = empHrs + totalWorkingHours;
+			empWage = empHrs * empRatePerHour;
+			System.out.println("day " + totalWorkingDays + " = " + empWage);
+			totalEmpWage = empWage + totalEmpWage;
+
 		}
+		System.out.println("salary of " + company + " employee is " + totalEmpWage);
 
-		System.out.println("Total working hour = " + totalWorkingHour);
-		System.out.println("Toatl working day = " + totalWorkingDay);
-		System.out.println("Total wage of the month = " + totalWage);
+	}
+
+	public static void main(String[] args) {
+		Employee_Wage_Computation dMart = new Employee_Wage_Computation("dmart", 20, 20, 100);
+		dMart.totalEmpWage();
+		Employee_Wage_Computation wipro = new Employee_Wage_Computation("wipro", 25, 15, 100);
+		wipro.totalEmpWage();
 	}
 
 }
