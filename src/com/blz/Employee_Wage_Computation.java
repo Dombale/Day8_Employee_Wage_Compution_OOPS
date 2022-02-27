@@ -1,38 +1,55 @@
 package com.blz;
 
 public class Employee_Wage_Computation {
+	// Initialize and declare variables
+
 	static int wagePerHour = 20;
 	static int empHrs = 0;
 	static int empHrsf = 8;
 	static int empHrsP = 4;
 	static int workingDay = 20;
+	static int totalWage = 0;
+	static int totalWorkingHour = 0;
+	static int totalWorkingDay = 0;
+	static int wagePerDay;
 
 	public static void main(String[] args) {
-		System.out.println("Welcome in Employee Wage Compution..!!!");
-		calculateEmpfullMonthSalary(); // Calling method
+		System.out.println("Welcome in Employee Wage Computation..!!!");
+		calculateSalary(); // Calling method
 	}
 
-	// Use static method to Calculate Employee Full Month Salary
+	// Use static method to Calculate Employee salary till 100hrs & 20 days
 
-	static void calculateEmpfullMonthSalary() {
-		int randomNum = (int) (Math.random() * 3); // create random number using math function
+	static void calculateSalary() {
+		for (int i = 1; i <= workingDay; i++) {
+			if (totalWorkingHour <= 100 && totalWorkingDay <= 20) {
+				int empCheck = (int) Math.floor((Math.random() * 10) % 3);
 
-		switch (randomNum) {
-		case 0:
+				if (empCheck == 2) {
+					wagePerDay = (wagePerHour * empHrsf);
+					totalWage = totalWage + wagePerDay;
+					totalWorkingHour = totalWorkingHour + empHrsf;
+					totalWorkingDay++;
+				}
 
-			int salary = wagePerHour * empHrs; // Employee Salary/Day
-			System.out.println("Employee is Absent ,salary is :" + salary);
-			break;
-		case 1:
+				else if (empCheck == 1) {
 
-			int salaryf = wagePerHour * empHrsf * workingDay; // Employee full Salary/Month
-			System.out.println("Employeeis Present full time full month, salary is :" + salaryf);
-			break;
-		case 2:
+					wagePerDay = (wagePerHour * empHrsP);
+					totalWage = totalWage + wagePerDay;
+					totalWorkingHour = totalWorkingHour + empHrsP;
+					totalWorkingDay++;
+				} else {
+					wagePerDay = 0;
+					totalWage = totalWage + wagePerDay;
+				}
 
-			int salaryp = wagePerHour * empHrsP * workingDay; // Employee Part time Salary/Month
-			System.out.println("Employee is Present part time full month, salary is :" + salaryp);
-			break;
+			} else
+				break;
 		}
+
+		System.out.println("Total working hour = " + totalWorkingHour);
+		System.out.println("Toatl working day = " + totalWorkingDay);
+		System.out.println("Total wage of the month = " + totalWage);
 	}
+
 }
