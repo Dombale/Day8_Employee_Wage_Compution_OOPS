@@ -5,6 +5,7 @@ public class Employee_Wage_Computation {
 	static int empHrs = 0;
 	static int empHrsf = 8;
 	static int empHrsP = 4;
+	static int workingDay = 20;
 
 	public static void main(String[] args) {
 		System.out.println("Welcome in Employee Wage Compution..!!!");
@@ -24,13 +25,13 @@ public class Employee_Wage_Computation {
 			break;
 		case 1:
 
-			int salaryf = wagePerHour * empHrsf; // Employee full time Salary/Day
-			System.out.println("Employeeis Present full time, salary is :" + salaryf);
+			int salaryf = wagePerHour * empHrsf * workingDay; // Employee full Salary/Month
+			System.out.println("Employeeis Present full time full month, salary is :" + salaryf);
 			break;
 		case 2:
 
-			int salaryp = wagePerHour * empHrsP; // Employee part time Salary/Day
-			System.out.println("Employee is Present part time, salary is :" + salaryp);
+			int salaryp = wagePerHour * empHrsP * workingDay; // Employee Part time Salary/Month
+			System.out.println("Employee is Present part time full month, salary is :" + salaryp);
 			break;
 		}
 	}
