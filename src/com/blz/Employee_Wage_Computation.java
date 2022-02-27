@@ -9,12 +9,12 @@ public class Employee_Wage_Computation {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome in Employee Wage Compution..!!!");
-		useSwitchCase(); // Calling method
+		calculateEmpfullMonthSalary(); // Calling method
 	}
 
-	// Use static method to Solving using Switch Case
+	// Use static method to Calculate Employee Full Month Salary
 
-	static void useSwitchCase() {
+	static void calculateEmpfullMonthSalary() {
 		int randomNum = (int) (Math.random() * 3); // create random number using math function
 
 		switch (randomNum) {
