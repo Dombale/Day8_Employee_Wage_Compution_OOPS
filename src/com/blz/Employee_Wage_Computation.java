@@ -8,30 +8,30 @@ public class Employee_Wage_Computation {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome in Employee Wage Compution..!!!");
-		addPartTimeEmpage(); // Calling method
+		useSwitchCase(); // Calling method
 	}
 
-	// Use static method to Calculate Employee Daily Wage.
+	// Use static method to Solving using Switch Case
 
-	static void addPartTimeEmpage() {
-		int randomNum = (int) (Math.random() * 2); // create random number using math function
+	static void useSwitchCase() {
+		int randomNum = (int) (Math.random() * 3); // create random number using math function
 
-		if (randomNum == 1) // Check Employee presence
-		{
-			System.out.println(" Employee is Present ");
+		switch (randomNum) {
+		case 0:
 
-			if (empHrsf == 8) {
-				int salary = wagePerHour * empHrsf; // Employee Full timeSalary/Day
-				System.out.println(" Employee salary of Full time is :" + salary);
-			}
-			if (empHrsP == 4) {
-				int salary = wagePerHour * empHrsP; // Employee Part time Salary/Day
-				System.out.println(" Employee salary of Part time is :" + salary);
-			}
-		} else {
-			System.out.println(" Employee is Absent ");
-			int salary = wagePerHour * empHrs; // Employee No Salary/Day
-			System.out.println(" Employee salary is :" + salary);
+			int salary = wagePerHour * empHrs; // Employee Salary/Day
+			System.out.println("Employee is Absent ,salary is :" + salary);
+			break;
+		case 1:
+
+			int salaryf = wagePerHour * empHrsf; // Employee full time Salary/Day
+			System.out.println("Employeeis Present full time, salary is :" + salaryf);
+			break;
+		case 2:
+
+			int salaryp = wagePerHour * empHrsP; // Employee part time Salary/Day
+			System.out.println("Employee is Present part time, salary is :" + salaryp);
+			break;
 		}
 	}
 }
